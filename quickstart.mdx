@@ -1,0 +1,149 @@
+---
+title: Getting Started with Nothing2Install
+description: Set up your account and launch your first game demo in minutes using Nothing2Install's intuitive dashboard.
+---
+
+## Prerequisites
+
+<Callout kind="info">
+
+Before starting, ensure you have:
+- A Nothing2Install account (free trial available)
+- Your mobile game APK file ready (Android format)
+- A modern web browser (Chrome, Firefox, Safari)
+- Access to `https://dashboard.nothing2install.com`
+
+</Callout>
+
+## Create Your Account and Log In
+
+Sign up takes under 2 minutes. Follow these steps to get started.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Visit `https://dashboard.nothing2install.com/signup`.
+
+    Fill in your email, create a password, and select your role (Game Publisher, H5 Portal, or Cloud Provider).
+
+    Verify your email via the confirmation link.
+  </Step>
+  <Step title="Log In" icon="log-in">
+    Go to `https://dashboard.nothing2install.com/login`.
+
+    Enter your credentials.
+
+    Complete any 2FA if enabled.
+  </Step>
+</Steps>
+
+## Upload and Convert Your First Game
+
+Once logged in, convert your mobile game to HTML5 instantly.
+
+<Steps>
+  <Step title="Navigate to Games" icon="upload">
+    In the dashboard sidebar, click **Games** > **Upload New**.
+  </Step>
+  <Step title="Upload APK" icon="package">
+    Drag and drop your APK file or browse to select it.
+
+    Add metadata: game title, description, and supported platforms (iOS/Android/PC).
+  </Step>
+  <Step title="Convert" icon="zap">
+    Click **Convert Now**. Processing takes 10-60 seconds.
+
+    Monitor progress in the **Conversions** tab.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Converted games support ads and in-app purchases automatically via our Ad-Bridge plugin.
+</Callout>
+
+## Launch Browser-Based Demo
+
+Test your game on regional servers for global performance.
+
+<Tabs>
+  <Tab title="US Server" icon="globe">
+    In your game dashboard, select **Launch Demo** > **US**.
+
+    Copy the demo URL: `https://demo.nothing2install.com/us/{game-id}`.
+
+    Open in a new tab – game streams instantly, no download needed.
+  </Tab>
+  <Tab title="EU Server" icon="globe">
+    Select **EU** region.
+
+    Demo URL: `https://demo.nothing2install.com/eu/{game-id}`.
+
+    Ideal for European latency testing.
+  </Tab>
+  <Tab title="JP Server" icon="globe">
+    Choose **JP**.
+
+    URL: `https://demo.nothing2install.com/jp/{game-id}`.
+
+    Perfect for Asia-Pacific users.
+  </Tab>
+  <Tab title="IN Server" icon="globe">
+    Select **IN** (India).
+
+    URL: `https://demo.nothing2install.com/in/{game-id}`.
+  </Tab>
+</Tabs>
+
+## Share Your Game with Embed Code
+
+Embed the demo anywhere using this HTML snippet.
+
+<CodeGroup tabs="HTML,React">
+  ```html
+  <iframe
+    src="https://demo.nothing2install.com/us/{game-id}"
+    width="100%"
+    height="600"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+  ```
+  ```jsx
+  import { useEffect } from 'react';
+
+  function GameEmbed() {
+    return (
+      <iframe
+        src="https://demo.nothing2install.com/us/{game-id}"
+        width="100%"
+        height="600"
+        frameBorder="0"
+        allowFullScreen
+        title="Nothing2Install Game Demo"
+      />
+    );
+  }
+  ```
+</CodeGroup>
+
+Replace `{game-id}` with your actual game ID from the dashboard.
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your API access and manage sessions.
+  </Card>
+  <Card title="Configuration" icon="settings" href="/configuration">
+    Customize regions, ads, and scaling options.
+  </Card>
+  <Card title="Guides" icon="book-open" href="/guides">
+    Advanced topics like IAP integration.
+  </Card>
+  <Card title="Changelog" icon="git-branch" href="/changelog">
+    Stay updated with latest features.
+  </Card>
+</Columns>
+
+<Callout kind="success">
+  Congratulations! You've launched your first instant game demo. Explore the dashboard for analytics and more.
+</Callout>

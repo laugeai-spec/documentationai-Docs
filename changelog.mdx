@@ -1,0 +1,126 @@
+---
+title: Changelog
+description: Track the latest updates, new features, and improvements in Nothing2Install to stay current with platform enhancements.
+---
+
+## Recent Updates
+
+<Callout kind="success">
+  Nothing2Install releases updates frequently to enhance game streaming, conversion tools, and performance. Check your dashboard at `https://dashboard.example.com` for the latest version.
+</Callout>
+
+<Update label="2024-10-15" description="v2.0.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added instant streaming demos for top mobile titles like PUBG Mobile and Candy Crush Saga—play directly in browsers without downloads.
+- Introduced Ad-Bridge plugin v2 for seamless integration of ads and in-app purchases (IAP) in streamed games.
+
+## Improvements
+
+- Enhanced global server coverage (US, JP, EU, IN, ME) with `<50ms` latency for better worldwide availability.
+- Updated HTML5 conversion pipeline to support more Unity and Unreal Engine mobile games.
+
+</Update>
+
+<Update label="2024-09-10" description="v1.5.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- New webhook support for real-time game session analytics at `https://api.example.com/v1/webhooks/games`.
+- Bulk catalog conversion API endpoint for game publishers.
+
+## Bug Fixes
+
+- Fixed intermittent streaming disconnects during high-load sessions.
+- Resolved compatibility issues with certain iOS Safari versions.
+
+```javascript
+// Example webhook payload
+{
+  "event": "game_session_ended",
+  "gameId": "pubg_mobile",
+  "sessionId": "sess_12345",
+  "duration": 1200,
+  "revenue": 2.50
+}
+```
+
+</Update>
+
+<Update label="2024-08-05" description="v1.4.0" tags={["bugfix", "improvement"]}>
+
+## Improvements
+
+- Optimized streaming infrastructure for ultra-scalable performance, reducing bandwidth usage by 30%.
+- Improved retention tracking for H5 game portals.
+
+## Bug Fixes
+
+- Patched conversion errors for games with complex shaders.
+- Fixed dashboard UI glitches on mobile devices.
+
+</Update>
+
+## Upgrade Instructions
+
+Follow these steps to ensure you run the latest version of Nothing2Install integrations.
+
+<Steps>
+  <Step title="Check Current Version" icon="check-circle">
+
+    Log in to your dashboard and navigate to Settings > Version.
+
+  </Step>
+  <Step title="Update SDK" icon="download">
+
+    <CodeGroup tabs="JavaScript,Android">
+      ```javascript
+      // Update to v2.0.0
+      npm install nothing2install-sdk@2.0.0
+      ```
+      ```kotlin
+      // In build.gradle
+      implementation 'com.nothing2install:sdk:2.0.0'
+      ```
+    </CodeGroup>
+
+  </Step>
+  <Step title="Restart Sessions" icon="refresh-cw">
+
+    Redeploy your game portals or cloud instances to apply changes.
+
+  </Step>
+  <Step title="Verify" icon="zap">
+
+    Test a demo stream at `https://minio-shared-ff.n2i-cache.xyz/superapp/pages/master/index.html?customer=n2i`.
+
+  </Step>
+</Steps>
+
+## Upcoming Features
+
+<Columns cols={2}>
+  <Card title="Advanced Analytics" icon="bar-chart-3" href="/guides/analytics">
+    Detailed player behavior insights and revenue dashboards coming soon.
+  </Card>
+  <Card title="AI-Optimized Streaming" icon="cpu" href="/concepts/ai-streaming">
+    Automatic quality adjustments based on network conditions.
+  </Card>
+  <Card title="Expanded Game Support" icon="gamepad-2" href="/configuration/games">
+    Native support for more engines and AR/VR titles.
+  </Card>
+  <Card title="Self-Hosted Option" icon="server" href="/quickstart/self-host">
+    Run your own streaming servers with our open-source tools.
+  </Card>
+</Columns>
+
+<Expandable title="How to Stay Informed" default-open="true">
+
+Subscribe to updates via the dashboard or follow our [latest news](https://www.nothing2install.com/latest-news/). Enable email notifications for breaking changes and major releases.
+
+</Expandable>
+
+<Callout kind="tip">
+  For custom integrations or enterprise support, book an appointment at [nothing2install.com/booking](https://www.nothing2install.com/booking/).
+</Callout>

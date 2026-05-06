@@ -1,0 +1,182 @@
+---
+title: Integrations and Monetization
+description: Learn how to connect Nothing2Install with ad networks and in-app purchase systems to monetize your streamed games effectively.
+---
+
+## Overview
+
+Nothing2Install enables seamless monetization through its Ad-Bridge plug-in and support for in-app purchases (IAP). Integrate with popular ad networks and payment providers to generate revenue from your streamed games. You can also connect to third-party portals and configure webhooks for real-time event handling.
+
+<Columns cols={2}>
+  <Card title="Ad-Bridge" icon="zap" href="#ad-bridge">
+    Plug-in for ads and IAP integration.
+  </Card>
+  <Card title="Third-Party Portals" icon="link" href="#third-party">
+    Connect to game portals easily.
+  </Card>
+  <Card title="Webhooks" icon="bell" href="#webhooks">
+    Receive game events instantly.
+  </Card>
+  <Card title="Monetization Tips" icon="dollar-sign" href="#tips">
+    Best practices for revenue.
+  </Card>
+</Columns>
+
+## Ad-Bridge Plug-in Setup
+
+The Ad-Bridge plug-in simplifies ad and IAP integration. Follow these steps to get started.
+
+<Steps>
+  <Step title="Download Plug-in" icon="download">
+    Clone the Ad-Bridge repository from your partner GitLab.
+
+````bash
+git clone https://gitlab.partners.n2i.io/n2i/android-n2i-ads.git
+cd android-n2i-ads
+````
+  </Step>
+  <Step title="Configure Keys" icon="settings">
+    Add your ad network credentials to the config file.
+  </Step>
+  <Step title="Build and Deploy" icon="rocket">
+    Build the plug-in and integrate it into your game stream.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  Ensure your game supports HTML5 output for optimal Ad-Bridge compatibility.
+</Callout>
+
+## Integrating Ads and IAP
+
+Choose your preferred method based on your needs.
+
+<Tabs>
+  <Tab title="Ads" icon="dollar-sign">
+    Integrate rewarded video ads or interstitials.
+
+    <CodeGroup tabs="JavaScript,Unity">
+    ````javascript
+    // Initialize Ad-Bridge
+    N2IAds.init({
+      adUnitId: 'YOUR_AD_UNIT_ID',
+      network: 'admob'
+    });
+
+    // Show rewarded ad
+    N2IAds.showRewardedAd((reward) => {
+      console.log(`User rewarded: ${reward.amount}`);
+    });
+    ````
+
+    ````csharp
+    // Unity C# example
+    N2IAds.Init("YOUR_AD_UNIT_ID", "admob");
+
+    N2IAds.ShowRewardedAd((reward) => {
+      Debug.Log($"Reward: {reward.amount}");
+    });
+    ````
+    </CodeGroup>
+  </Tab>
+  <Tab title="IAP" icon="shopping-cart">
+    Handle in-app purchases seamlessly.
+
+    <CodeGroup tabs="JavaScript,Unity">
+    ````javascript
+    // Setup IAP
+    N2IAds.setupIAP({
+      productId: 'premium_unlock',
+      merchantId: 'YOUR_MERCHANT_ID'
+    });
+
+    // Purchase flow
+    N2IAds.purchase('premium_unlock', (success, receipt) => {
+      if (success) {
+        console.log('Purchase verified:', receipt);
+      }
+    });
+    ````
+
+    ````csharp
+    // Unity IAP
+    N2IAds.SetupIAP("premium_unlock", "YOUR_MERCHANT_ID");
+    N2IAds.Purchase("premium_unlock", (success, receipt) => {
+      if (success) Debug.Log("IAP success");
+    });
+    ````
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+<ParamField header="X-Ad-Bridge-Key" param-type="string" required="true">
+  Your Ad-Bridge authentication key.
+</ParamField>
+
+## Third-Party Portal and Provider Connections
+
+Connect Nothing2Install to external game portals or cloud providers using API keys.
+
+| Provider | Integration Type | Endpoint |
+|----------|------------------|----------|
+| H5 Portals | API Key | `https://api.example.com/portals/h5` |
+| Cloud Gaming | OAuth | `https://api.example.com/providers/cloud` |
+| Ad Networks | Webhook | `https://api.example.com/ads` |
+
+Use the provider's dashboard to generate keys, then add them to your Nothing2Install config:
+
+````json
+{
+  "integrations": {
+    "portal": {
+      "key": "YOUR_PORTAL_KEY",
+      "endpoint": "https://portal.example.com/api"
+    }
+  }
+}
+````
+
+## Webhook Configurations
+
+Set up webhooks to receive events like game starts, ad views, and purchases.
+
+<Expandable title="Advanced Webhook Setup" default-open="false">
+  Configure your webhook URL in the dashboard.
+
+  ```mermaid
+  sequenceDiagram
+      Player->>Nothing2Install: Game Start
+      Nothing2Install->>YourWebhook: POST /events
+      YourWebhook->>Player: ACK
+  ```
+
+  Example payload:
+
+````json
+{
+  "event": "ad_viewed",
+  "gameId": "pubg_mobile",
+  "revenue": 0.05,
+  "timestamp": "2024-01-15T10:30:00Z"
+}
+````
+</Expandable>
+
+<ParamField query="webhook_url" param-type="string" required="true">
+  URL to receive events (HTTPS required).
+</ParamField>
+
+## Best Practices
+
+<Callout kind="tip">
+  Test integrations in staging before production. Monitor webhook delivery rates and handle retries.
+</Callout>
+
+<Columns cols={2}>
+  <Card title="Next: Quickstart" icon="book-open" href="/quickstart">
+    Set up your first stream.
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Full endpoint details.
+  </Card>
+</Columns>
